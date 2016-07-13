@@ -50,8 +50,8 @@
       <input type="text" class="form-control" ng-model="vm.postsSearch">
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6" ng-repeat="tweet in vm.tweets | filter: vm.matchesCompletedFilter | filter: vm.postsSearch">
+  <div class="row inbox">
+    <div class="col-md-6 post" ng-repeat="tweet in vm.tweets | filter: vm.matchesCompletedFilter | filter: vm.postsSearch">
       <div class="panel panel-default" set-height>
         <div class="panel-heading">
           <h3 class="panel-title">
@@ -76,7 +76,6 @@
                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Reopen
               </button>
             </span>
-            <div class="clearfix"></div>
           </div>
           <p>
             <a href="https://twitter.com/intent/user?user_id={{ tweet.user.id_str }}" target="_blank">
