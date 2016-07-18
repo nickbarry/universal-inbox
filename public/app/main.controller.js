@@ -47,13 +47,7 @@ function MainController($window, TweetsFactory) {
   vm.gmailLabels = [];
   vm.gmails = [];
 
-  const gmailCreds = {
-    nico: '394896127572-n8cak7pmi1vghqm1oj4933pd5tb53r4u.apps.googleusercontent.com',
-    groupId: {
-      clientId: '278099091068-4sasl3gdt6g3j9jut839hq5i98q2cuge.apps.googleusercontent.com',
-      clientSecret: '7H5yi-MztyI1yTQ0AHYIpu1H',
-    },
-  };
+  const clientId = '394896127572-n8cak7pmi1vghqm1oj4933pd5tb53r4u.apps.googleusercontent.com';
   const scopes = [
     'https://www.googleapis.com/auth/gmail.readonly',
     'https://www.googleapis.com/auth/gmail.compose',
@@ -90,16 +84,13 @@ function MainController($window, TweetsFactory) {
    * @param {Object} authResult Authorization result.
    */
   function handleAuthResult(authResult) {
-    /* jshint camelcase: false */
-    console.log('authResult: ', authResult);
+    console.log(authResult);
     if (authResult && !authResult.error) {
       loadGmailApi();
     } else {
-      //console.log('Authentication denied.');
-
       gapi.auth.authorize(
         {
-          client_id: gmailCreds.groupId.clientId,
+          client_id: clientId,
           scope: scopes,
           immediate: false,
         }, handleAuthResult);
@@ -107,9 +98,8 @@ function MainController($window, TweetsFactory) {
   }
 
   vm.checkAuth = function () {
-    /* jshint camelcase: false */
     gapi.auth.authorize({
-      client_id: gmailCreds.groupId.clientId,
+      client_id: clientId,
       scope: scopes.join(' '),
       immediate: true,
     }, handleAuthResult);
