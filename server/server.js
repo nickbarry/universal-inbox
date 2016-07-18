@@ -62,8 +62,7 @@ app.use('/api/posts', postRoutes);
 
 // Fetch latest 10 emails and show the snippet
 const Gmail = require('node-gmail-api');
-const gmail = new Gmail('ya29.Ci8gA0T1Y4SS_oq9SfBIVvj1F0YyVdn' +
-    'HmI_oVG-VPWO0GoUdRWhNcG-DTgcmU7v_zQ');
+const gmail = new Gmail(process.env.GMAIL_ACCESS_TOKEN);
 const s = gmail.messages('label:coding', { max: 10 });
 
 s.on('data', function (d) {
