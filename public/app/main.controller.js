@@ -84,6 +84,7 @@ function MainController($window, TweetsFactory) {
    * @param {Object} authResult Authorization result.
    */
   function handleAuthResult(authResult) {
+    /* jshint camelcase: false */
     console.log(authResult);
     if (authResult && !authResult.error) {
       loadGmailApi();
@@ -98,6 +99,7 @@ function MainController($window, TweetsFactory) {
   }
 
   vm.checkAuth = function () {
+    /* jshint camelcase: false */
     gapi.auth.authorize({
       client_id: clientId,
       scope: scopes.join(' '),
