@@ -29,7 +29,7 @@ function cacheTweets(username, sinceId) {
     } else {
       //console.log('Tweets returned from Twitter module: ', tweets);
       tweets = tweets.statuses;
-      DbTweet.find().exec(function(err, cachedTweets) {console.log('tweets is', cachedTweets)});
+      DbTweet.find().exec(function(err, cachedTweets) { /* console.log('tweets is', cachedTweets) */ });
       for (let t of tweets) {
         //const tweet = new DbTweet(t);
         //tweet.save(errorCallback);
