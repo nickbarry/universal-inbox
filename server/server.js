@@ -61,7 +61,6 @@ const postRoutes = require('./routes/postRoutes');
 app.use('/api/posts', postRoutes);
 
 // Fetch latest 10 emails and show the snippet
-
 const Gmail = require('node-gmail-api');
 const gmail = new Gmail('ya29.Ci8gA0T1Y4SS_oq9SfBIVvj1F0YyVdn' +
     'HmI_oVG-VPWO0GoUdRWhNcG-DTgcmU7v_zQ');
@@ -69,6 +68,10 @@ const s = gmail.messages('label:coding', { max: 10 });
 
 s.on('data', function (d) {
   console.log('[server.js] Gmail snippet: ', d.snippet);
+});
+
+s.on('error', function(err) {
+  console.error('Error retrieving Gmails: ', err);
 });
 
 module.exports = app;
