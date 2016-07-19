@@ -4,7 +4,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-default" role="navigation">
   <div class="container"><!--container class creates the white boxes that hold our navbar and messages-->
-    
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -33,16 +33,18 @@
       <div class="btn-group" role="group" aria-label="Filter tasks by completed status">
         <button type="button" class="btn btn-default"
                 ng-class="vm.viewCompleted ? '' : 'active'"
-                ng-click="vm.viewCompleted = false">New</button>
+                ng-click="vm.viewCompleted = false">New
+        </button>
         <button type="button" class="btn btn-default"
                 ng-class="vm.viewCompleted ? 'active' : ''"
-                ng-click="vm.viewCompleted = true">Completed</button>
+                ng-click="vm.viewCompleted = true">Completed
+        </button>
       </div>
       <!--&nbsp;&nbsp;-->
       <!--<div class="btn-group" role="group" aria-label="Filter tasks by source">-->
-        <!--<button type="button" class="btn btn-default active">All sources</button>-->
-        <!--<button type="button" class="btn btn-default active">Twitter</button>-->
-        <!--<button type="button" class="btn btn-default active">Facebook</button>-->
+      <!--<button type="button" class="btn btn-default active">All sources</button>-->
+      <!--<button type="button" class="btn btn-default active">Twitter</button>-->
+      <!--<button type="button" class="btn btn-default active">Facebook</button>-->
       <!--</div>-->
     </div>
     <div class="col-md-6 inbox--filter-textbox inbox__filter-component text-center">
@@ -55,7 +57,8 @@
         <uib-tab-heading>
           <i class="fa fa-twitter" aria-hidden="true"></i><span class="tabHead"> Twitter</span>
         </uib-tab-heading>
-        <div class="col-md-6" ng-repeat="tweet in vm.tweets | orderBy: '-id_str' | filter: vm.matchesCompletedFilter | filter: vm.postsSearch">
+        <div class="col-md-6"
+             ng-repeat="tweet in vm.tweets | orderBy: '-id_str' | filter: vm.matchesCompletedFilter | filter: vm.postsSearch">
           <div class="panel panel-default animated fadeIn" set-height>
             <div class="panel-heading">
               <h3 class="panel-title">
@@ -84,13 +87,16 @@
               </div>
               <p>
                 <a href="https://twitter.com/intent/user?user_id={{ tweet.user.id_str }}" target="_blank">
-                  <img src="{{ tweet.user.profile_image_url_https }}" class="img-thumbnail" title="{{ tweet.user.description }}">
+                  <img src="{{ tweet.user.profile_image_url_https }}" class="img-thumbnail"
+                       title="{{ tweet.user.description }}">
                 </a>
                 {{ tweet.text }}
               </p>
               <form>
                 <div class="input-group">
-                  <input type="text" ng-model="vm.replyText[$index]" ng-init="vm.replyText[$index] = '@' + tweet.user.screen_name + ' '" class="form-control" placeholder="Tweet..."> 
+                  <input type="text" ng-model="vm.replyText[$index]"
+                         ng-init="vm.replyText[$index] = '@' + tweet.user.screen_name + ' '" class="form-control"
+                         placeholder="Tweet...">
                     <span class="input-group-btn"> 
                       <a ng-href="https://twitter.com/intent/tweet?in_reply_to={{tweet.id_str}}&text={{vm.replyText[$index]}}" class="btn btn-default">
                       <i class="fa fa-twitter" aria-hidden="true"></i> Tweet</a>
@@ -105,7 +111,8 @@
         <uib-tab-heading>
           <img ng-src="../css/images/envelope.ico" id="envelope"/> <span class="tabHead">Gmail</span>
         </uib-tab-heading>
-        <div class="col-md-6" ng-repeat="email in vm.emails | filter: vm.matchesCompletedFilter | filter: vm.postsSearch">
+        <div class="col-md-6"
+             ng-repeat="email in vm.emails | filter: vm.matchesCompletedFilter | filter: vm.postsSearch">
           <div class="panel panel-default animated fadeIn" set-height>
             <div class="panel-heading">
               <h3 class="panel-title">
@@ -131,26 +138,28 @@
                 </span>
                 <div class="clearfix"></div>
               </div>
-              <div id="subjLine">Subject:   {{ email.Subject }}</div>
+              <div id="subjLine">{{ email.Subject }}</div>
               <p>
                 <a href="https://mail.google.com/mail/u/0/#inbox/{{ email.id }}" target="_blank">
-                  <img src="{{ email.user.profile_image_url_https }}" class="img-thumbnail" title="{{ email.user.description }}">
+                  <img src="{{ email.user.profile_image_url_https }}" class="img-thumbnail"
+                       title="{{ email.user.description }}">
                 </a>
-                <span id="snippet">{{ email.snippet }}</div>
-              </p>
-              <form class="gmailButton">
-                <div class="input-group">
+                <span id="snippet">{{ email.snippet }}</span>
+            </p>
+              <form>
+              <div class="input-group">
+                <input type="text" class="form-control" value="" placeholder="Reply...">
                   <span class="input-group-btn">
                     <button ng-click="vm.replyTweet($index)" class="btn btn-default" type="button"></i> Reply</button>
                   </span>
-                </div>
-              </form>
+              </div>
+            </form>
             </div>
           </div>
         </div>
       </uib-tab>
     </uib-tabset>
 
-        
+
   </div>
 </div>
