@@ -97,9 +97,11 @@
                   <input type="text" ng-model="vm.replyText[$index]"
                          ng-init="vm.replyText[$index] = '@' + tweet.user.screen_name + ' '" class="form-control"
                          placeholder="Tweet...">
-                    <span class="input-group-btn"> 
-                      <a ng-href="https://twitter.com/intent/tweet?in_reply_to={{tweet.id_str}}&text={{vm.replyText[$index]}}" class="btn btn-default">
-                        <i class="fa fa-twitter" aria-hidden="true"></i> Tweet</a>
+                  <span class="input-group-btn">
+                    <a ng-href="https://twitter.com/intent/tweet?in_reply_to={{tweet.id_str}}&text={{vm.replyText[$index]}}"
+                       class="btn btn-default">
+                      <i class="fa fa-twitter" aria-hidden="true"></i> Tweet
+                    </a>
                   </span>
                 </div>
               </form>
