@@ -98,8 +98,7 @@
                          ng-init="vm.replyText[$index] = '@' + tweet.user.screen_name + ' '" class="form-control"
                          placeholder="Tweet...">
                     <span class="input-group-btn"> 
-                      <a ng-href="https://twitter.com/intent/tweet?in_reply_to={{tweet.id_str}}&text={{vm.replyText[$index]}}"
-                         class="btn btn-default">
+                      <a ng-href="https://twitter.com/intent/tweet?in_reply_to={{tweet.id_str}}&text={{vm.replyText[$index]}}" class="btn btn-default">
                         <i class="fa fa-twitter" aria-hidden="true"></i> Tweet</a>
                   </span>
                 </div>
@@ -119,7 +118,6 @@
               <h3 class="panel-title">
                 <a href="https://mail.google.com/mail/u/0/#inbox/{{ email.id }}" target="_blank">
                   {{ email.From }}
-                  <!--<small>{{ email.Subject }}</small>-->
                 </a>
               </h3>
             </div>
@@ -147,19 +145,16 @@
                        title="{{ email.user.description }}">
                 </a>
                 <span id="snippet">{{ email.snippet }}</span>
-            </p>
-            <form>
-              <div class="input-group">
-                <input type="text" class="form-control" value="" placeholder="Reply...">
-                <span id="snippet">{{ email.snippet }}</span>
               </p>
-              <form class="gmailButton">
+              <form>
                 <div class="input-group">
+                  <input type="text" class="form-control" value="" placeholder="Reply...">
                   <span class="input-group-btn">
                     <button ng-click="vm.replyTweet($index)" class="btn btn-default" type="button"></i> Reply</button>
                   </span>
-              </div>
-            </form>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </uib-tab>
